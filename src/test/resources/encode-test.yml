@@ -1,0 +1,22 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: DecodedCipher
+# This is comment 1
+destinations:
+  queues:
+    #This is comment 2  The cipher entry shall remain in comments! '{cipher}1234e45da2'
+    NYSE:
+      exchange: nyse
+      routing-key: NYSE
+    IBOV:
+      exchange: ibov
+      routing-key: DecodedCipher
+
+
+  topics:
+    weather:
+      exchange: alerts
+      routing-key: DecodedCipher

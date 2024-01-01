@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-src/test/resources/application-test-result.yml
+src/test/resources/*-test-result.yml
 
 ### NetBeans ###
 /nbproject/private/

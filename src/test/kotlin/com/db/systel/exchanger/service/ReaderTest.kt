@@ -15,7 +15,13 @@ class ReaderTest {
     @Test
     fun readYamlTest() {
         val reader = Reader()
-        println(reader.readYaml())
+        println(reader.readYaml("src/test/resources/encode-test.yml"))
+    }
+
+    @Test
+    fun readFileTest() {
+        val reader = Reader()
+        reader.readFile("src/test/resources/encode-test.yml","DecodedCipher")
     }
 
     @Test
@@ -29,7 +35,7 @@ class ReaderTest {
     fun matchCipherTest() {
         val reader = Reader()
         assertEquals("1234e45da1",reader.matchCipher("    password: '{cipher}1234e45da1'"))
-        assertTrue(reader.matchCipher("    password: '{error}1234e45da1'").isEmpty())
+        assertTrue(reader.matchCipher("    wrong: '{error}1234e45da1'").isEmpty())
     }
 
     @Test

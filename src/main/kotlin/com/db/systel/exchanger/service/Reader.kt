@@ -8,11 +8,38 @@ import java.io.InputStream
 
 class Reader {
 
-    fun readYaml() {
-        val inputStream : InputStream = FileInputStream(File("src/test/resources/kitchen.yml"))
+    fun readYaml(fileName: String) {
+        val inputStream : InputStream = FileInputStream(File(fileName))
         val yaml = Yaml()
         val data :Map<String, Any> = yaml.load(inputStream)
         println(data)
+    }
+
+    fun readFile(fileName: String, valueToEncode: String) {
+        val file = File(fileName)
+        val lines = ArrayList(file.readLines())
+        lines.forEachIndexed{index, line ->
+            if (line.contains(valueToEncode)) {
+                val cipheredValue = "'{cipher}1234e45da2'"
+                val exchange = line.replace(valueToEncode, cipheredValue)
+                println(exchange)
+                val position = index + 1
+                println("at position ${position}")
+            } else {
+                //println(line)
+            }
+        }
+        /*
+        lines.forEach{
+            if (it.contains(valueToEncode)) {
+                val cipheredValue = "'{cipher}1234e45da2'"
+                val exchange = it.replace(valueToEncode, cipheredValue)
+                println(exchange)
+            } else {
+                println(it)
+            }
+        }
+        */
     }
 
     fun writeFileLineByLine(fileName: String) {
